@@ -81,7 +81,6 @@ class BearychatJob implements ShouldQueue
             'Project Name:' . config('app.name'),
             'Url:' . $this->url,
             'Exception:' . " $this->exception(code:$this->code): $this->message at $this->file:$this->line",
-            'Exception File:' . $this->file . "($this->line)",
             'Exception Trace:' . $this->trace,
         ];
 //
