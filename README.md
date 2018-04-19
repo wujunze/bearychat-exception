@@ -34,3 +34,5 @@ class Handler extends ExceptionHandler
 ```
 
 more usage see in https://github.com/ElfSundae/laravel-bearychat
+
+![file](https://lccdn.phphub.org/uploads/images/201804/19/4486/O53DWlcSrT.jpg?imageView2/2/w/1240/h/0)
