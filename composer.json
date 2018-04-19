@@ -1,0 +1,21 @@
+{
+    "name": "cblink/bearychat-exception",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hanson",
+            "email": "h@hanc.cc"
+        }
+    ],
+    "require": {
+        "elfsundae/laravel-bearychat": "^1.4"
+    },
+    "require-dev": {
+        "laravel/framework": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cblink\\BearychatException\\": "src/"
+        }
+    }
+}
