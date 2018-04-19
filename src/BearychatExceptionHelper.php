@@ -14,6 +14,7 @@ class BearychatExceptionHelper
     {
         BearychatJob::dispatch(
             \request()->fullUrl(),
+            get_class($exception),
             $exception->getMessage(),
             $exception->getCode(),
             $exception->getFile(),

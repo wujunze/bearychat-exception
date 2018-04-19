@@ -4,6 +4,7 @@
 namespace Cblink\BearychatException;
 
 
+use Carbon\Carbon;
 use ElfSundae\BearyChat\Laravel\BearyChat;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -40,18 +41,23 @@ class BearychatJob implements ShouldQueue
      * @var
      */
     private $trace;
+    /**
+     * @var
+     */
+    private $exception;
 
     /**
      * Create a new job instance.
      *
      * @param $url
+     * @param $exception
      * @param $message
      * @param $code
      * @param $file
      * @param $line
      * @param $trace
      */
-    public function __construct($url, $message, $code, $file, $line, $trace)
+    public function __construct($url, $exception, $message, $code, $file, $line, $trace)
     {
         $this->message = $message;
         $this->code = $code;
@@ -59,6 +65,7 @@ class BearychatJob implements ShouldQueue
         $this->line = $line;
         $this->url = $url;
         $this->trace = $trace;
+        $this->exception = $exception;
     }
 
     /**
@@ -69,13 +76,12 @@ class BearychatJob implements ShouldQueue
     public function handle()
     {
         $message = [
+            'Time:' . Carbon::now()->toDateTimeString(),
             'Environment:' . config('app.env'),
             'Project Name:' . config('app.name'),
             'Url:' . $this->url,
-            'Exception Message:' . $this->message,
-            'Exception Code:' . $this->code,
-            'Exception File:' . $this->file,
-            'Exception Line:' . $this->line,
+            'Exception:' . $this->message . "($this->exception(code:$this->code))",
+            'Exception File:' . $this->file . "($this->line)",
             'Exception Trace:' . $this->trace,
         ];
 //
