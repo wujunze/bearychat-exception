@@ -83,7 +83,11 @@ class BearychatJob implements ShouldQueue
             'Exception:' . " $this->exception(code:$this->code): $this->message at $this->file:$this->line",
             'Exception Trace:' . $this->trace,
         ];
-//
-        BearyChat::send(implode(PHP_EOL, $message));
+
+        try {
+            BearyChat::send(implode(PHP_EOL, $message));
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+        }
     }
 }
