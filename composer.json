@@ -17,5 +17,12 @@
         "psr-4": {
             "Cblink\\BearychatException\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ElfSundae\BearyChat\Laravel\ServiceProvider"
+            ]
+        }
+    },
 }
